@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnMale: RadioButton
     private lateinit var btnFemale: RadioButton
     private lateinit var seekBarHeight: SeekBar
+    private lateinit var seekBarIdade: SeekBar
+    private lateinit var seekBarPeso: SeekBar
     private lateinit var txtHeight: TextView
     private lateinit var btnAgeMinus: Button
     private lateinit var btnAgePlus: Button
@@ -26,8 +28,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var txtResult: TextView
 
     private var height: Int = 0
-    private var weight: Double = 50.0
-    private var age: Int = 25
+    private var weight: Double = 0.0
+    private var age: Int = 0
     private var imc: Double = 0.0
     private val FEMALE_CORRECTION_FACTOR = 1.1
     private val HEIGHT_CONVERSION_FACTOR = 0.01
@@ -42,11 +44,9 @@ class MainActivity : AppCompatActivity() {
         btnMale = findViewById(R.id.btn_male)
         btnFemale = findViewById(R.id.btn_female)
         seekBarHeight = findViewById(R.id.seekBar_height)
+        seekBarIdade = findViewById(R.id.seekBar_idade)
+        seekBarPeso  = findViewById(R.id.seekBar_peso)
         txtHeight = findViewById(R.id.txt_height)
-        btnAgeMinus = findViewById(R.id.btn_age_minus)
-        btnAgePlus = findViewById(R.id.btn_age_plus)
-        btnWeightMinus = findViewById(R.id.btn_peso_minus)
-        btnWeightPlus = findViewById(R.id.btn_peso_mais)
         txtAge = findViewById(R.id.txt_idade)
         txtWeight = findViewById(R.id.txt_peso)
         btnCalculate = findViewById(R.id.btn_calcular)
@@ -67,25 +67,28 @@ class MainActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
-        btnAgeMinus.setOnClickListener {
-            age--
-            txtAge.text = age.toString()
-        }
+        seekBarIdade.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                age = progress
+                txtAge.text = age.toString()
+            }
 
-        btnAgePlus.setOnClickListener {
-            age++
-            txtAge.text = age.toString()
-        }
+            override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
-        btnWeightMinus.setOnClickListener {
-            weight--
-            txtWeight.text = weight.toString()
-        }
+            override fun onStopTrackingTouch(seekBar: SeekBar) {}
+        })
 
-        btnWeightPlus.setOnClickListener {
-            weight++
-            txtWeight.text = weight.toString()
-        }
+        seekBarPeso.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                weight = progress.toDouble()
+                txtWeight.text = weight.toString()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {}
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {}
+        })
+
 
         fun calculateIMC() {
             val heightInMeters = height * HEIGHT_CONVERSION_FACTOR

@@ -53,10 +53,14 @@
                 <RadioButton
                     android:id="@+id/btn_male"
                     style="@style/Style_botao_entrar"
-                    android:text="Masculino"
+                    android:layout_width="120dp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:checked="false"/>
+                    android:checked="false"
+                    android:text="Homem"
+                    android:buttonTint="@color/white"
+                    android:paddingBottom="7dp"
+                    android:drawableBottom="@drawable/ic_male_60"/>
 
                 <Space
                     android:layout_width="5dp"
@@ -65,10 +69,14 @@
                 <RadioButton
                     android:id="@+id/btn_female"
                     style="@style/Style_botao_entrar"
-                    android:text="Feminino"
+                    android:layout_width="120dp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:checked="false"/>
+                    android:checked="false"
+                    android:text="Mulher"
+                    android:buttonTint="@color/white"
+                    android:drawableBottom="@drawable/ic_female_60"
+                    android:paddingBottom="7dp"/>
 
             </RadioGroup>
 
@@ -101,16 +109,15 @@
             android:thumbTint="@color/dark_red"
             android:progressBackgroundTint="@color/white"
             android:progressTint="@color/dark_red"
-
             android:max="300"
-            android:progress="170"
+            android:progress="0"
             android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/txt_height"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1.70 cm"
+            android:text="0 cm"
             android:textColor="@color/white"
 
             android:textSize="18sp"
@@ -145,14 +152,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/white"/>
-
-            <Button
-                android:id="@+id/btn_age_minus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-" />
-
-            <Space
+                <Space
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"/>
 
@@ -160,19 +160,24 @@
                 android:id="@+id/txt_idade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="26"
+                android:hint="0"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBar_idade"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:thumbTint="@color/dark_red"
+                    android:progressBackgroundTint="@color/white"
+                    android:progressTint="@color/dark_red"
+                    android:max="120"
+                    android:progress="0"
+                    android:layout_gravity="center"/>
 
                 <Space
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"/>
-
-            <Button
-                android:id="@+id/btn_age_plus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+" />
 
             </LinearLayout>
 
@@ -192,12 +197,6 @@
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
-                <Button
-                    android:id="@+id/btn_peso_minus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-" />
-
                 <Space
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"/>
@@ -206,7 +205,7 @@
                     android:id="@+id/txt_peso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="50"
+                    android:hint="0"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -214,11 +213,16 @@
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"/>
 
-                <Button
-                    android:id="@+id/btn_peso_mais"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+" />
+                <SeekBar
+                    android:id="@+id/seekBar_peso"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:thumbTint="@color/dark_red"
+                    android:progressBackgroundTint="@color/white"
+                    android:progressTint="@color/dark_red"
+                    android:max="200"
+                    android:progress="0"
+                    android:layout_gravity="center"/>
 
             </LinearLayout>
 
@@ -238,7 +242,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.9"/>
+        app:layout_constraintVertical_bias="0.7"/>
 
     <Button
         android:id="@+id/btn_calcular"

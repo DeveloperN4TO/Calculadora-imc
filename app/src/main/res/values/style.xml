@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Style_botao_entrar">
-        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_width">130dp</item>
         <item name="android:layout_height">90dp</item>
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
