@@ -8,6 +8,15 @@
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:background">@drawable/shape_botao_sexo</item>
+    </style>
+
+    <style name="Style_botao_calcular">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:background">@drawable/shape_bt_calcular</item>
 
     </style>
 
