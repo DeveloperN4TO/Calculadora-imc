@@ -4,10 +4,15 @@ import android.annotation.SuppressLint
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.PopupWindow
 import android.widget.RadioButton
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +56,31 @@ class MainActivity : AppCompatActivity() {
         txtWeight = findViewById(R.id.txt_peso)
         btnCalculate = findViewById(R.id.btn_calcular)
         txtResult = findViewById(R.id.txt_resultado)
+
+        val buttonMenuIMC = findViewById<ImageButton>(R.id.menu_imc)
+
+// Inflate the popup layout
+        val popupView = layoutInflater.inflate(R.layout.popup_layout, null)
+
+// Initialize a new instance of PopupWindow
+        val popupWindow = PopupWindow(
+            popupView, // Your custom layout to appear as popup
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        val popupTextView = popupView.findViewById<TextView>(R.id.popup_text_view)
+        popupTextView.text = "This is the popup message"
+
+        buttonMenuIMC.setOnClickListener {
+            // Show the popup window
+            popupWindow.showAtLocation(
+                buttonMenuIMC, // Location to display popup window
+                Gravity.CENTER, // Window position
+                0, // X offset
+                0 // Y offset
+            )
+        }
+
 
         btnMale.isChecked = false
         btnFemale.isChecked = false
